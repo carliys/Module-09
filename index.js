@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require("./utils/generateMarkdown.js");
 
 const questions = [
   {
@@ -36,8 +37,16 @@ inquirer
 
  const createMD = data => {
   console.log(data);
-  const template = `# project tittle ${data.project}
-## ${data.description}`
+  const template = generateMarkdown(data);
+  ## Table of Contents:
+1. [Description](#description)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Contributing](#contributing)
+5. [Tests](#tests)
+6. [License](#license)
+7. [Questions](#questions)
+  (`#${data.description}`)
   console.log(template);
   fs.writeFile('README.md', template, err => {
     err ? console.log(err) : console.log('success!!')
