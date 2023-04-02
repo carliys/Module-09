@@ -1,44 +1,72 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
+const inquirer = require("inquirer");
+const fs = require("fs");
+const path = require("path");
 const generateMarkdown = require("./utils/generateMarkdown.js");
 
 const questions = [
   {
-    type: 'input',
-    name: 'project',
-    message: 'what is your project name?'
+    type: "input",
+    name: "Title",
+    message: "What is the tittle of your project?",
   },
   {
-    type: 'input',
-    name: 'description',
-    message: 'what is the desription of your project?'
+    type: "input",
+    name: "Description",
+    message: "What was your motovation?",
+ 
   },
   {
-    type: 'choice',
-    name: 'testConfirm',
-    message: 'does your project have tests?'
+    type: "input",
+    name: "Installation",
+    message: "What are the steps required to install your project?",
+  },
+  {
+    type: "input",
+    name: "Usage",
+    message: "What command do you need to use to run the command?",
+  },
+  {
+    type: "input",
+    name: "Licence",
+    message: "Choose a licence",
+    Options: ["Apache", "BSD", "MIT", "None"], 
+  },
+  {
+    type: "input",
+    name: "Test",
+    message: "What are the test inistructions?",
+  },
+  {
+    type: "input",
+    name:"Contributing",
+    message:"Describe how people can contribute!",
+  },
+  {
+    type:"input",
+    name:"Questions",
+    message:"what is your GitHub and your email to contact you?",
+  },
+  {
+    type:"input",
+    name:"Questions",
+    message:"What is your email to contact you?"
   }
 ];
 
-inquirer
- .prompt(questions)
- .then(answers => {
-  if(answers.testConfirm){
-    inquirer.prompt({
-      type:'input',
-      name:'tests',
-      message:'what are the test instructions for this software?'
-    }).then(function(response){
-      
-    })
-  }
-   createMD(answers);
- });
+function writeFile(fileName, data) {
+  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
 
- const createMD = data => {
-  console.log(data);
-  const template = generateMarkdown(data);
-  ## Table of Contents:
+function init() {
+  inquirer.prompt(questions).then((responsesObj) => {
+    console.log(responsesObj);
+    writeFile("README.md", generateMarkdown({ ...responsesObj }));
+  });
+}
+
+init();
+
+/*## Table of Contents:
 1. [Description](#description)
 2. [Installation](#installation)
 3. [Usage](#usage)
@@ -51,4 +79,4 @@ inquirer
   fs.writeFile('README.md', template, err => {
     err ? console.log(err) : console.log('success!!')
   });
- };
+ }; */
