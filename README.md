@@ -32,5 +32,5 @@
   # Questions
   My GitHub is CARLIYS, and my Email is carlosvargas3200@gmail.com
 
-  ![video](/video.gif)
+  ![video](/img/video.gif)
   
