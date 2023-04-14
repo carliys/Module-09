@@ -21,7 +21,7 @@
   To use the REDAME Generator you will need to run node index.js in the terminal, then you will have to answer the questions that the terminal is prompting!
 
   # Licence
-  undefined
+  MIT Licence
 
   # Test
   No test instructions at the moment.
