@@ -1,4 +1,4 @@
-# Professional README Generator: Module 9
+# Carlos README Generator 
   
 
   ## Table of Contents:
@@ -32,5 +32,5 @@
   # Questions
   My GitHub is CARLIYS, and my Email is carlosvargas3200@gmail.com
 
-  ![video](/img/video.gif)
+  ![video](video.gif)
   
